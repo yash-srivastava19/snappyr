@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "snappyr"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "Setup Projects Blazingly Fast with Snappyr"
 authors = ["Yash Srivastava <ysrivastava82@gmail.com>"]
 readme = "README.md"
+
+[project.urls]
+repository = "https://github.com/yash-srivastava19/snappyr"
 
 [tool.poetry.dependencies]
 python = "^3.11"

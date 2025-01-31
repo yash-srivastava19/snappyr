@@ -1,5 +1,8 @@
 # Snappyr - Setup Projects Blazingly Fast.
 
+[PyPI](https://pypi.org/project/snappyr/)
+[Repo](https://github.com/yash-srivastava19/snappyr)
+
 ## Introduction
 I'm someone who works a lot on different projects, especially in python. Having to manually set up things that takes me sometime to do, takes away the fun from it. Tools like poetry or uv are preferred for project management, but in my case, I require just the project setup, I can manage other things. 
 
