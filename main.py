@@ -5,7 +5,7 @@ import sys
 def create_directory_structure(project_name):
     """ Creates the directory structure for the project """
     
-    # [PR]: Add more stuff.
+    # [PR]: Add more stuff. This is the directory structure I mostly go for.
     base_dirs = [
         f"{project_name}",
         f"{project_name}/src",
@@ -34,12 +34,12 @@ def create_directory_structure(project_name):
     
     # Add the .gitignore
     with open(os.path.join(project_name, ".gitignore"), "w") as f:
-        f.write("*.pyc\n__pycache__/\n.env\n.vscode/\n.idea/\n.DS_Store\nvenv/")
+        f.write("*.pyc\n__pycache__/\n.env\n.vscode/\n.idea/\n.DS_Store\nvenv/") # these are things we need to ignore ; works really well for now.
     
     print("Directory structure created.")
 
 def setup_virtualenv(project_name):
-    """ Sets up a virtual environment inside the project directory. """
+    """ Sets up a virtual environment inside the project directory. This saves a lot of time."""
     
     print("Setting up virtual environment...")
     venv_path = os.path.join(project_name, "venv")
@@ -51,7 +51,7 @@ def setup_virtualenv(project_name):
     if os.name == "nt":  # Windows
         print(f"{venv_path}\\Scripts\\activate")
     else:  # macOS/Linux
-        print(f"source {venv_path}/bin/activate")
+        print(f"source {venv_path}/bin/activate") # for different system, this might work.
 
 def initialize_git(project_name):
     """ Initializes a Git repository and optionally links to a remote repo."""
@@ -64,7 +64,7 @@ def initialize_git(project_name):
         print(f"Linked to remote repository: {remote_url}")
 
 def add_setup_files(project_name):
-    """ Adds setup.py and setup.cfg for packaging the project."""
+    """ Adds setup.py and setup.cfg for packaging the project. Will work when `is_package` is true"""
 
     print("Adding setup.py and setup.cfg for packaging...")
     with open(os.path.join(project_name, "setup.py"), "w") as f:
