@@ -1,108 +1,209 @@
-# Snappyr - Setup Projects Blazingly Fast.
+# Snappyr - Setup Projects Blazingly Fast 🚀
 
-[PyPI](https://pypi.org/project/snappyr/)
-[Repo](https://github.com/yash-srivastava19/snappyr)
+[![PyPI](https://img.shields.io/pypi/v/snappyr)](https://pypi.org/project/snappyr/)
+[![Python](https://img.shields.io/pypi/pyversions/snappyr)](https://pypi.org/project/snappyr/)
+[![License](https://img.shields.io/github/license/yash-srivastava19/snappyr)](https://github.com/yash-srivastava19/snappyr)
+[![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
+[PyPI](https://pypi.org/project/snappyr/) | [Repository](https://github.com/yash-srivastava19/snappyr)
 
 ## Introduction
-I'm someone who works a lot on different projects, especially in python. Having to manually set up things that takes me sometime to do, takes away the fun from it. Tools like poetry or uv are preferred for project management, but in my case, I require just the project setup, I can manage other things. 
 
-That's why I created Snappyr. It is a basic tool that just does it for me. With this tool in my arsenal, I focus my energy on creating projects, not worrying about other things. Snappyr is hardly 100 LOC, in pure python without any external dependencies, but it helps me a ton.
+Snappyr is a modern Python project scaffolding tool that sets up professional Python projects with industry-standard tooling in seconds. Instead of manually configuring the same development environment repeatedly, Snappyr creates a complete, production-ready project structure with modern tools like **uv**, **ruff**, **mypy**, and **pre-commit hooks**.
 
-## Features
-Snappyr does a lot of redundant tasks, especially the ones we do in the start of a new python project. These include:
+## ✨ Features
 
-1. **Create the directory structure**. Snappyr sets up the project directory. Snappyr can be made to adjust as per your need. Just fork the project, and create your own version. The format that works for me is:
+Snappyr creates projects with professional development practices out of the box:
 
-```python
-project_name
-|__ src/
-|__ tests/
-|__ scripts/
-|__ docs/
-|__ venv
-|__ .env
-|__ .gitignore
-|__ main.py
-|__ README.md
-|__ requirements.txt
+### 🏗️ **Modern Project Structure**
+```
+project_name/
+├── src/
+│   ├── main.py
+│   └── __init__.py
+├── tests/
+│   ├── __init__.py
+│   └── test_main.py
+├── scripts/
+├── docs/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── pyproject.toml        # Modern Python packaging
+├── .pre-commit-config.yaml
+├── .gitignore
+├── .env
+├── LICENSE
+└── README.md
 ```
 
+### ⚡ **Modern Dependency Management with UV**
+- Uses [uv](https://github.com/astral-sh/uv) instead of pip/poetry for ultra-fast dependency management
+- Automatic virtual environment creation and management
+- Lock file generation for reproducible builds
 
-2. **Setting up virtual environment**. Snappyr uses python virtual environment behind the scenes and creates a venv so that we don't run into dependency conflicts.
+### 🧹 **Code Quality & Linting**
+- **Ruff**: Lightning-fast Python linter and formatter (replaces black, flake8, isort)
+- **Mypy**: Comprehensive type checking with strict configuration
+- **Pre-commit hooks**: Automated code quality checks on every commit
 
-3. **Setup Git Repository for the project**. By default, git is initialized in the project working directory. This can also be connected to a remote repository, or can be later configured using Git CLI.
+### 🧪 **Testing & Coverage**
+- **Pytest** with coverage reporting
+- Pre-configured test structure
+- GitHub Actions CI/CD workflow
 
-4. **Package Mode**. If I'm working on developing a library(which is often the case), I can specify in the Snappyr CLI and it'll configure the `setuptools` and other necessary requirements to be used for your project.
+### 📦 **Professional Package Setup**
+- Modern `pyproject.toml` configuration
+- Support for multiple Python versions (3.11+)
+- Configurable license types (MIT, Apache-2.0, GPL-3.0, BSD-3-Clause)
+- Package mode for library development
 
-5. **Pre-commit hooks**. Snappyr also add a boilerplate pre-commit hooks for the project.
+## 🚀 Installation
 
-## Usage
-Using snappyr is pretty easy. First, download the package through PyPI:
-
+### Via pip (Recommended)
 ```bash
 pip install snappyr
 ```
-Snappyr is available through CLI, which can be run using poetry. After installing, use the commands to run:
+
+### Via uv (if you have uv installed)
+```bash
+uv tool install snappyr
+```
+
+## 📖 Usage
+
+### Basic Usage
+```bash
+# Create a new project
+snappyr my_awesome_project
+
+# Or with options
+snappyr my_project --python-version 3.12 --license Apache-2.0
+```
+
+### Advanced Options
+```bash
+snappyr my_project \
+  --is_package \              # Set up as a Python package
+  --python-version 3.12 \     # Target Python version
+  --license MIT \             # Choose license type
+  --no-git \                  # Skip Git initialization
+  --no-precommit              # Skip pre-commit setup
+```
+
+### Available Options
+- `--is_package`: Configure project as a Python package with proper structure
+- `--python-version`: Target Python version (default: 3.11)
+- `--license`: License type - MIT, Apache-2.0, GPL-3.0, BSD-3-Clause, None (default: MIT)
+- `--no-git`: Skip Git repository initialization
+- `--no-precommit`: Skip pre-commit hooks setup
+- `--version`: Show version information
+
+## 🔧 What Gets Created
+
+### Development Tools Configuration
+- **pyproject.toml**: Modern Python packaging with comprehensive tool configuration
+- **Ruff**: Configured with sensible defaults for linting and formatting
+- **Mypy**: Strict type checking configuration
+- **Pytest**: Testing framework with coverage reporting
+- **Pre-commit**: Automated quality checks including ruff, mypy, and security scanning
+
+### GitHub Actions CI
+- Multi-Python version testing (3.11, 3.12)
+- Automated linting, formatting, and type checking
+- Test coverage reporting
+- Codecov integration
+
+### Professional Files
+- Comprehensive `.gitignore` for Python projects
+- License file with proper copyright notice
+- Professional README template with badges
+- Environment file template
+
+## 🏃‍♂️ Quick Start After Project Creation
 
 ```bash
-poetry run snappyr --project_name="severance" --is_package=False
+cd your_project
+
+# Install dependencies
+uv sync
+
+# Run the project
+uv run python src/main.py
+
+# Run tests
+uv run pytest
+
+# Code quality checks
+uv run ruff check .          # Lint code
+uv run ruff format .         # Format code  
+uv run mypy .                # Type checking
+
+# Set up pre-commit (if not skipped)
+uv run pre-commit install
+uv run pre-commit run --all-files
 ```
 
-The options available in the CLI are
-`--project_name`: This is your project name. You can set this whatever you want.
-`--is_package`: If the project you are working on is a package, Snappyr will add additional things too.
+## 🛠️ Development Workflow
 
-### Get it to work.
-I feel the right way to use Snappyr is not through package, but setting this up in your machine so you can call it from anywhere. You just need to copy the `main.py` (renamed to snappyr), and follow the instructions as per your machine.
+The generated projects support a modern development workflow:
 
-#### Windows
+1. **Write code** in `src/`
+2. **Write tests** in `tests/`
+3. **Quality checks** run automatically via pre-commit
+4. **CI/CD** runs on GitHub Actions
+5. **Dependencies** managed with uv
 
-1. Save the Script: Save the code as `snappyr.py` in a directory, e.g., C:\my_scripts.
+## 📋 Prerequisites
 
-2. Add the script to PATH:
+Snappyr requires these tools to be installed:
+- **Python 3.11+**
+- **uv**: `pip install uv` or `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- **git**: For version control (optional but recommended)
 
-- Open the Start Menu and search for "Environment Variables.
-- Click Edit the system environment variables > Environment Variables.
-- In the System Variables section, find the Path variable, select it, and click Edit.
-- Add the path to your directory (e.g., C:\my_scripts) and click OK.
-- Make It Callable: In C:\my_scripts, create a batch file (e.g., `snappyr.bat`) with the following content:
+## 🎯 Why Choose Snappyr?
 
-```bat
-@echo off
-python %~dp0snappyr.py %*
-```
-3. This makes the script callable from anywhere in the command prompt as:
+### **Speed**: Get from idea to coding in seconds
+### **Modern**: Uses the latest Python tooling and best practices  
+### **Professional**: Creates production-ready project structure
+### **Opinionated**: Sensible defaults that work for most projects
+### **Extensible**: Easy to customize the generated structure
 
-```cmd
-snappyr <project_name>
-```
+## 🆚 Comparison with Other Tools
 
-#### Linux/Mac
+| Feature | Snappyr | Cookiecutter | Poetry new |
+|---------|---------|--------------|------------|
+| Modern tooling (uv, ruff) | ✅ | ❌ | ❌ |
+| Pre-commit hooks | ✅ | Depends | ❌ |
+| CI/CD setup | ✅ | Depends | ❌ |
+| Type checking setup | ✅ | Depends | ❌ |
+| Zero configuration | ✅ | ❌ | ❌ |
+| Speed | ⚡ | 🐌 | 🚀 |
 
-1. Save the `main.py` as `snappyr.py`(or any other name you want)
+## 🤝 Contributing
 
-2. Make the file Executable, run the following command:
+Contributions are welcome! This project uses the same modern tooling it creates:
 
 ```bash
-chmod +x snappyr.py
-```
-3. Move it to a directory in your PATH (e.g., /usr/local/bin) so you can call it from anywhere:
+# Clone and set up development environment
+git clone https://github.com/yash-srivastava19/snappyr
+cd snappyr
+uv sync --all-extras
 
-```bash
-mv snappyr.py /usr/local/bin/snappyr
-```
+# Run tests
+uv run pytest
 
-4. From your terminal, run:
-
-```bash
-snapper <project_name>
-```
-
-After setting this up, you can set up your projects as(from anywhere!!):
-
-```bash
-snappyr my_python_project
+# Quality checks  
+uv run ruff check .
+uv run mypy .
 ```
 
-## Contributing
-This is a very small project, so it'll be very easy to add features. Get in touch with me if you have any ideas, and we can work on PRs.
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [uv](https://github.com/astral-sh/uv) for blazing-fast Python package management
+- [ruff](https://github.com/astral-sh/ruff) for lightning-fast linting and formatting
+- [mypy](https://github.com/python/mypy) for comprehensive type checking
